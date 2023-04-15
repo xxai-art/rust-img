@@ -126,7 +126,7 @@ fn encode_by_ext(img: &[u8], ext: &Ext, width: u32, height: u32) -> Result<Optio
 
   match ext {
     // https://github.com/kornelski/cavif-rs --speed=n — Encoding speed between 1 (best, but slowest) and 10 (fastest, but a blurry mess), the default value is 4. Speeds 1 and 2 are unbelievably slow, but make files ~3-5% smaller. Speeds 7 and above degrade compression significantly, and are not recommended.
-    Ext::avif => AvifEncoder::new_with_speed_quality(&mut result_buf, 4, 64).write_image(
+    Ext::avif => AvifEncoder::new_with_speed_quality(&mut result_buf, 3, 64).write_image(
       img,
       width,
       height,
