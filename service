@@ -10,7 +10,7 @@ Environment="RUST_LOG=debug,supervisor=warn,hyper=warn,rustls=warn,quinn_udp=war
 Environment="LD_LIBRARY_PATH=/usr/local/lib"
 Environment="PORT=5500"
 Environment="TO=http://127.0.0.1:5400/"
-ExecStart=/mnt/bin/img
+ExecStart=timeout 7d /mnt/bin/img
 
 [Install]
 WantedBy=multi-user.target
