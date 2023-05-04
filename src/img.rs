@@ -5,6 +5,7 @@ use fast_image_resize as fr;
 use image::{
   codecs::{
     avif::AvifEncoder,
+    jpeg::JpegEncoder,
     webp::{WebPEncoder, WebPQuality},
   },
   ColorType, ImageEncoder, ImageFormat,
@@ -21,6 +22,7 @@ const MAX_HEIGHT: u32 = 16380;
 pub enum Ext {
   avif,
   webp,
+  jpg,
   #[cfg(feature = "jxl")] // 不知道为什么在google cloud run不工作
   jxl,
 }
@@ -131,6 +133,12 @@ fn encode_by_ext(img: &[u8], ext: &Ext, width: u32, height: u32) -> Result<Optio
       width,
       height,
       ColorType::Rgba8,
+    )?,
+    Ext::jpg => JpegEncoder::new_with_quality(&mut result_buf, 80).write_image(
+      img,
+      width,
+      height,
+      ColorType::Rgb8,
     )?,
     Ext::webp => WebPEncoder::new_with_quality(&mut result_buf, WebPQuality::lossy(82))
       .write_image(img, width, height, ColorType::Rgba8)?,
