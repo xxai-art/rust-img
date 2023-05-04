@@ -94,7 +94,6 @@ pub fn resize(
       let th = to_height as f64;
       let wh = width as f64 / height as f64;
       let to_wh = tw / th;
-      dbg!(wh, to_wh);
       if to_wh > wh {
         to_width = (th * wh).round() as u32;
       } else {
