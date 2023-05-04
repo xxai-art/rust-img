@@ -89,6 +89,17 @@ pub fn resize(
       }
     } else if to_height == 0 {
       to_height = ((height * to_width) as f64 / width as f64).round() as u32
+    } else {
+      let tw = to_width as f64;
+      let th = to_height as f64;
+      let wh = width as f64 / height as f64;
+      let to_wh = tw / th;
+      dbg!(wh, to_wh);
+      if to_wh > wh {
+        to_width = (th * wh).round() as u32;
+      } else {
+        to_height = (tw / wh).round() as u32;
+      }
     };
   }
   // Multiple RGB channels of source image by alpha channel (not required for the Nearest algorithm)
@@ -138,7 +149,7 @@ fn encode_by_ext(img: &[u8], ext: &Ext, width: u32, height: u32) -> Result<Optio
       img,
       width,
       height,
-      ColorType::Rgb8,
+      ColorType::Rgba8,
     )?,
     Ext::webp => WebPEncoder::new_with_quality(&mut result_buf, WebPQuality::lossy(82))
       .write_image(img, width, height, ColorType::Rgba8)?,

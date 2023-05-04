@@ -32,6 +32,7 @@ pub async fn proxy(id: &str, to_width: u32, to_height: u32) -> Result<Response> 
 
   let url = unsafe { TO.clone() + &hash };
   let req = reqwest::get(&url).await?;
+
   let status = req.status();
   let mime = req
     .headers()
@@ -61,6 +62,9 @@ pub async fn proxy(id: &str, to_width: u32, to_height: u32) -> Result<Response> 
 pub async fn get(Path(args): Path<String>) -> Result<Response> {
   let pos = args.find('/');
   if pos.is_none() {
+    if args == "favicon.ico" {
+      return Ok("".into_response());
+    }
     return proxy(&args, 0, 0).await;
   }
 

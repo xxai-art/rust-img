@@ -14,11 +14,12 @@ const-str = "0.5.4"
 fast_image_resize = "2.7.1"
 futures = "0.3.28"
 human_bytes = "0.4.2"
+quinn = { version = "0.9", default-features = false, features = ["runtime-tokio", "tls-rustls", "ring"] }
 image = { version = "0.24.6", features = ["avif-encoder", "libwebp", "webp", "webp-encoder"] }
 jpegxl-rs = { path="./jpegxl-rs/jpegxl-rs" }
 jpegxl-sys = { path="./jpegxl-rs/jpegxl-sys" }
 once_cell = "1.17.1"
-reqwest = { version = "0.11.17", features = ["tokio-rustls", "http3"] }
+reqwest = { version = "0.11.17", features = ["tokio-rustls","http3"] }
 strum = "0.24.1"
 strum_macros = "0.24.3"
 sysinfo = "0.28.4"

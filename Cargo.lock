@@ -1078,6 +1078,7 @@ dependencies = [
  "jpegxl-rs",
  "jpegxl-sys",
  "once_cell",
+ "quinn",
  "raw-cpuid",
  "reqwest",
  "serde",
