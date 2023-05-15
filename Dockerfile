@@ -21,9 +21,9 @@ RUN ./sh/upx.install.sh
 WORKDIR /root
 
 ADD sh/cflag.sh sh/cflag.sh
-ADD sh/jpegxl-rs.sh sh/jpegxl-rs.sh
+# ADD sh/jpegxl-rs.sh sh/jpegxl-rs.sh
 
-RUN ./sh/jpegxl-rs.sh
+# RUN ./sh/jpegxl-rs.sh
 
 ADD src src
 ADD Cargo.toml .
