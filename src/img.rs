@@ -164,8 +164,9 @@ fn encode_by_ext(img: &[u8], ext: &Ext, width: u32, height: u32) -> Result<Optio
       )
       .to_rgba16();
       let img = jpegxl_rs::encode::EncoderFrame::new(&img).num_channels(4);
+
       let mut encoder = encoder_builder()
-        .quality(3.0)
+        .quality(3.0) // https://docs.rs/jpegxl-rs/latest/jpegxl_rs/encode/struct.JxlEncoderBuilder.html#method.quality
         .speed(EncoderSpeed::Kitten)
         .has_alpha(true)
         .build()?;
