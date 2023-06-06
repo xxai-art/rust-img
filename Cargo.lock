@@ -83,17 +83,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "atty"
-version = "0.2.14"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d9b39be18770d11421cdb1b9947a45dd3f37e93092cbf377614828a319d5fee8"
-dependencies = [
- "hermit-abi 0.1.19",
- "libc",
- "winapi",
-]
-
-[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -380,12 +369,6 @@ dependencies = [
  "unicode-width",
  "windows-sys 0.45.0",
 ]
-
-[[package]]
-name = "const-str"
-version = "0.5.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b62c6d3ea43cbe0bc5a081f276fd477e4291d168aacc9f9d98073325333c0d4"
 
 [[package]]
 name = "core-foundation"
@@ -900,15 +883,6 @@ checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
 
 [[package]]
 name = "hermit-abi"
-version = "0.1.19"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
-dependencies = [
- "libc",
-]
-
-[[package]]
-name = "hermit-abi"
 version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ee512640fe35acbfb4bb779db6f0d80704c2cacfa2e39b601ef3e3f47d1ae4c7"
@@ -943,12 +917,6 @@ dependencies = [
  "http",
  "pin-project-lite",
 ]
-
-[[package]]
-name = "http-range-header"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0bfe8eed0a9285ef776bb792479ea3834e8b94e13d615c2f66d03dd50a435a29"
 
 [[package]]
 name = "httparse"
@@ -1061,16 +1029,13 @@ name = "img"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "atty",
  "axum",
  "coarsetime",
- "const-str",
  "fast_image_resize",
  "futures",
  "human_bytes",
  "image",
  "jpegxl-rs",
- "jpegxl-sys",
  "once_cell",
  "quinn",
  "raw-cpuid",
@@ -1079,10 +1044,8 @@ dependencies = [
  "strum",
  "strum_macros",
  "sysinfo",
- "time",
  "tokio",
  "tower",
- "tower-http",
  "tracing",
  "tracing-stackdriver",
  "tracing-subscriber",
@@ -1197,9 +1160,9 @@ dependencies = [
 
 [[package]]
 name = "jpegxl-rs"
-version = "0.8.1+libjxl-0.8.1"
+version = "0.8.2-alpha+libjxl-0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1aa657754548cb83651cbe425e53b9242e36fe044dae719c4d630bae9a8c6895"
+checksum = "3a7f054b669bdec9b2e026ec633953f7d55a16b1392e8713dd16ac22934c2484"
 dependencies = [
  "byteorder",
  "derive_builder",
@@ -2661,25 +2624,6 @@ dependencies = [
  "pin-project",
  "pin-project-lite",
  "tokio",
- "tower-layer",
- "tower-service",
- "tracing",
-]
-
-[[package]]
-name = "tower-http"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5d1d42a9b3f3ec46ba828e8d376aec14592ea199f70a06a548587ecd1c4ab658"
-dependencies = [
- "bitflags 1.3.2",
- "bytes",
- "futures-core",
- "futures-util",
- "http",
- "http-body",
- "http-range-header",
- "pin-project-lite",
  "tower-layer",
  "tower-service",
  "tracing",
