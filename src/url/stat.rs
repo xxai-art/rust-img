@@ -1,8 +1,7 @@
+use awp::Result;
 use axum::response::{IntoResponse, Response};
 use human_bytes::human_bytes;
 use sysinfo::{CpuExt, CpuRefreshKind, RefreshKind, System, SystemExt};
-
-use crate::err::Result;
 
 #[cfg(all(target_os = "linux", target_arch = "x86_64"))]
 fn cpu_flags() -> String {

@@ -5,15 +5,20 @@
 use axum::{routing::get, Router};
 
 mod env;
-mod err;
 mod img;
-mod log;
-mod srv;
 mod url;
+
+use crate::env::TO;
 
 #[tokio::main]
 async fn main() {
-  log::init();
+  awp::init();
+
+  unsafe {
+    env::TO = std::env::var("TO").unwrap();
+    tracing::info!("→ {TO}");
+  }
+
   let mut router = Router::new();
   macro_rules! get {
     (=> $func:ident) => {
@@ -36,5 +41,5 @@ async fn main() {
 
   router = router.route(r"/*li", get(crate::url::img::get));
 
-  srv::srv(router).await;
+  awp::srv(router, 9911).await;
 }

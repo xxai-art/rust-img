@@ -1,11 +1,12 @@
 use std::str::FromStr;
 
+use awp::Result;
 use axum::{
   extract::Path,
   response::{IntoResponse, Response},
 };
 
-use crate::{env::TO, err::Result, img, img::Ext};
+use crate::{img, img::Ext};
 
 const CONTENT_TYPE: &str = "content-type";
 
@@ -30,7 +31,7 @@ pub async fn proxy(id: &str, to_width: u32, to_height: u32) -> Result<Response> 
     ext = Ext::avif;
   }
 
-  let url = unsafe { TO.clone() + &hash };
+  let url = unsafe { crate::env::TO.clone() + &hash };
   let req = reqwest::get(&url).await?;
 
   let status = req.status();

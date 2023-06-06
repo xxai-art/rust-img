@@ -129,6 +129,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "awp"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d01f39451b80868f327affb62c88471651599957f4686a3b2003fd46cfa87012"
+dependencies = [
+ "anyhow",
+ "axum",
+ "coarsetime",
+ "futures",
+ "once_cell",
+ "tower",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "axum"
 version = "0.6.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1029,6 +1045,7 @@ name = "img"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "awp",
  "axum",
  "coarsetime",
  "fast_image_resize",
