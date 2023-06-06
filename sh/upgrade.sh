@@ -2,4 +2,4 @@
 
 set -ex
 cargo update
-cargo upgrade
+cargo upgrade --incompatible

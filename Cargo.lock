@@ -872,8 +872,8 @@ dependencies = [
  "bytes",
  "futures",
  "h3",
- "quinn 0.10.1",
- "quinn-proto 0.10.1",
+ "quinn",
+ "quinn-proto",
  "tokio-util",
 ]
 
@@ -1000,7 +1000,7 @@ checksum = "0646026eb1b3eea4cd9ba47912ea5ce9cc07713d105b1a14698f4e6433d348b7"
 dependencies = [
  "http",
  "hyper",
- "rustls 0.21.1",
+ "rustls",
  "tokio",
  "tokio-rustls",
 ]
@@ -1072,7 +1072,7 @@ dependencies = [
  "jpegxl-rs",
  "jpegxl-sys",
  "once_cell",
- "quinn 0.9.3",
+ "quinn",
  "raw-cpuid",
  "reqwest",
  "serde",
@@ -1737,55 +1737,19 @@ checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
 
 [[package]]
 name = "quinn"
-version = "0.9.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "445cbfe2382fa023c4f2f3c7e1c95c03dcc1df2bf23cebcb2b13e1402c4394d1"
-dependencies = [
- "bytes",
- "pin-project-lite",
- "quinn-proto 0.9.3",
- "quinn-udp 0.3.2",
- "rustc-hash",
- "rustls 0.20.8",
- "thiserror",
- "tokio",
- "tracing",
- "webpki",
-]
-
-[[package]]
-name = "quinn"
 version = "0.10.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "21252f1c0fc131f1b69182db8f34837e8a69737b8251dff75636a9be0518c324"
 dependencies = [
  "bytes",
  "pin-project-lite",
- "quinn-proto 0.10.1",
- "quinn-udp 0.4.0",
+ "quinn-proto",
+ "quinn-udp",
  "rustc-hash",
- "rustls 0.21.1",
+ "rustls",
  "thiserror",
  "tokio",
  "tracing",
-]
-
-[[package]]
-name = "quinn-proto"
-version = "0.9.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "67c10f662eee9c94ddd7135043e544f3c82fa839a1e7b865911331961b53186c"
-dependencies = [
- "bytes",
- "rand",
- "ring",
- "rustc-hash",
- "rustls 0.20.8",
- "slab",
- "thiserror",
- "tinyvec",
- "tracing",
- "webpki",
 ]
 
 [[package]]
@@ -1798,24 +1762,11 @@ dependencies = [
  "rand",
  "ring",
  "rustc-hash",
- "rustls 0.21.1",
+ "rustls",
  "slab",
  "thiserror",
  "tinyvec",
  "tracing",
-]
-
-[[package]]
-name = "quinn-udp"
-version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "641538578b21f5e5c8ea733b736895576d0fe329bb883b937db6f4d163dbaaf4"
-dependencies = [
- "libc",
- "quinn-proto 0.9.3",
- "socket2 0.4.9",
- "tracing",
- "windows-sys 0.42.0",
 ]
 
 [[package]]
@@ -2033,8 +1984,8 @@ dependencies = [
  "once_cell",
  "percent-encoding",
  "pin-project-lite",
- "quinn 0.10.1",
- "rustls 0.21.1",
+ "quinn",
+ "rustls",
  "rustls-pemfile",
  "serde",
  "serde_json",
@@ -2130,17 +2081,6 @@ dependencies = [
  "libc",
  "linux-raw-sys",
  "windows-sys 0.48.0",
-]
-
-[[package]]
-name = "rustls"
-version = "0.20.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fff78fc74d175294f4e83b28343315ffcfb114b156f0185e9741cb5570f50e2f"
-dependencies = [
- "ring",
- "sct",
- "webpki",
 ]
 
 [[package]]
@@ -2458,9 +2398,9 @@ checksum = "2047c6ded9c721764247e62cd3b03c09ffc529b2ba5b10ec482ae507a4a70160"
 
 [[package]]
 name = "sysinfo"
-version = "0.28.4"
+version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b4c2f3ca6693feb29a89724516f016488e9aafc7f37264f898593ee4b942f31b"
+checksum = "02f1dc6930a439cc5d154221b5387d153f8183529b07c19aca24ea31e0a167e1"
 dependencies = [
  "cfg-if",
  "core-foundation-sys",
@@ -2649,7 +2589,7 @@ version = "0.24.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e0d409377ff5b1e3ca6437aa86c1eb7d40c134bfec254e44c830defa92669db5"
 dependencies = [
- "rustls 0.21.1",
+ "rustls",
  "tokio",
 ]
 
