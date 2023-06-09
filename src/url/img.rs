@@ -62,34 +62,39 @@ pub async fn proxy(id: &str, to_width: u32, to_height: u32) -> Result<Response> 
 
 pub async fn get(Path(args): Path<String>) -> Result<Response> {
   let pos = args.find('/');
-  if pos.is_none() {
-    if args == "favicon.ico" {
-      return Ok("".into_response());
-    }
-    return proxy(&args, 0, 0).await;
-  }
+  if let Some(pos) = pos {
+    let mut to_width = 0;
+    let mut to_height = 0;
 
-  let pos = pos.unwrap();
-  let opt = &args[..pos];
-  let opt = opt.split('-');
-  let id = &args[pos + 1..];
+    let opt = &args[..pos];
 
-  let mut to_width = 0;
-  let mut to_height = 0;
+    if opt == "8k" {
+      to_width = 7680;
+      to_height = 4320;
+    } else {
+      let opt = opt.split('-');
+      let id = &args[pos + 1..];
 
-  for i in opt {
-    if i.len() >= 2 {
-      let i = i.as_bytes();
-      if i[1..].iter().all(|&byte| byte.is_ascii_digit()) {
-        let start = i[0];
-        let n = byte_u32(&i[1..]);
-        if start == b'w' {
-          to_width = n;
-        } else if start == b'h' {
-          to_height = n;
+      for i in opt {
+        if i.len() >= 2 {
+          let i = i.as_bytes();
+          if i[1..].iter().all(|&byte| byte.is_ascii_digit()) {
+            let start = i[0];
+            let n = byte_u32(&i[1..]);
+            if start == b'w' {
+              to_width = n;
+            } else if start == b'h' {
+              to_height = n;
+            }
+          }
         }
       }
     }
+    proxy(id, to_width, to_height).await
+  } else {
+    if args == "favicon.ico" {
+      return Ok("".into_response());
+    }
+    proxy(&args, 0, 0).await
   }
-  proxy(id, to_width, to_height).await
 }
