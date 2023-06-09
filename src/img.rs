@@ -14,8 +14,8 @@ use jpegxl_rs::{decoder_builder, image::ToDynamic};
 use strum_macros::{AsRefStr, EnumString};
 
 // Blackmagic URSA Mini Pro是一款革命性的数字电影摄影机，搭载 12288 x 6480 12K Super 35传感器
-const MAX_WIDTH: u32 = 16380;
-const MAX_HEIGHT: u32 = 16380;
+pub const MAX_WIDTH: u32 = 16380;
+pub const MAX_HEIGHT: u32 = 16380;
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, PartialEq, EnumString, AsRefStr)]

@@ -62,19 +62,19 @@ pub async fn proxy(id: &str, to_width: u32, to_height: u32) -> Result<Response> 
 
 pub async fn get(Path(args): Path<String>) -> Result<Response> {
   let pos = args.find('/');
-  if let Some(pos) = pos {
-    let mut to_width = 0;
-    let mut to_height = 0;
+  let id;
+  let mut to_width = 7680;
+  let mut to_height = 4320;
 
+  if let Some(pos) = pos {
+    id = &args[pos + 1..];
     let opt = &args[..pos];
 
-    if opt == "8k" {
-      to_width = 7680;
-      to_height = 4320;
+    if opt == "0" {
+      to_width = 0;
+      to_height = 0;
     } else {
       let opt = opt.split('-');
-      let id = &args[pos + 1..];
-
       for i in opt {
         if i.len() >= 2 {
           let i = i.as_bytes();
@@ -90,11 +90,11 @@ pub async fn get(Path(args): Path<String>) -> Result<Response> {
         }
       }
     }
-    proxy(id, to_width, to_height).await
   } else {
     if args == "favicon.ico" {
       return Ok("".into_response());
     }
-    proxy(&args, 0, 0).await
+    id = &args;
   }
+  proxy(id, to_width, to_height).await
 }
